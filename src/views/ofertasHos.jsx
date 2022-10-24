@@ -1,0 +1,401 @@
+import React from 'react'
+
+import Navbar from '../components/navigate/navbar';
+import Footer from '../components/footer/footer';
+
+export default function Ofertas() {
+    return (
+        <>
+            <Navbar />
+            <main class="container conteudo my-4">
+                <nav class="row text-center p-4 bg-light" style={{ borderRadius: '20px' }}>
+                    <h5 class="col-4"><a href="./ofertas-voo">VOOS</a></h5>
+                    <h5 class="col-4"><a href="./ofertas-pac">PACOTES</a></h5>
+                    <h5 class="col-4"><a href="./ofertas-hos">HOSPEDAGENS</a></h5>
+                </nav>
+                {/* FORMUL�RIO */}
+                <section>
+                    <form>
+                        <div class="row my-4">
+                            <h5 class="col-sm-6 col-md-4 col-lg-3 mb-3">Qual seu destino?</h5>
+                            <div class="col-sm-6 col-md-8 col-lg-6 mb-3">
+                                <input type="text" class="form-control" id="inputCity" />
+                            </div>
+                            <div class="col-sm-12 col-lg-3 d-grid mb-3">
+                                <button type="submit" class="btn btn-primary">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+                {/* FORMUL�RIO */}
+                {/* CARDS */}
+                <section>
+                    {/* DESTINOS NACIONAIS */}
+                    <div>
+                        <h4 id="sp">SÃO PAULO</h4>
+                        <ul class="promo">
+                            Card01
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/comfort-hotel-fortaleza-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Comfort Hotel Fortaleza</h5>
+                                        <p>
+                                            A partir de <strong>Sáb 01 Out</strong> Até <strong>Qui 06 Out</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>130</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card01
+                            Card02
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/plaza-praia-suites-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Plaza Praia Suites Hotel</h5>
+                                        <p>
+                                            A partir de <strong>Sáb 24 Set</strong> Até <strong>Ter 04 Out</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>230</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card02
+                            Card03
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/Hotel_Brasil_tropical-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hotel Brasil Tropical</h5>
+                                        <p>
+                                            A partir de <strong>Seg 29 Ago</strong> Até <strong>Sex 02 Set</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>130</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card03
+                            Card04
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/portal_praia_hotel-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Portal da Praia Hotel</h5>
+                                        <p>
+                                            A partir de <strong>Ter 20 Set</strong> Até <strong>Sáb 24 Set</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>130</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card04
+                            Card05
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/maredomus-hotel-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Maredomus Hotel</h5>
+                                        <p>
+                                            A partir de <strong>Seg 29 Ago</strong> Até <strong>Ter 13 Ago</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>230</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card05
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 id="salv">SALVADOR</h4>
+                        <ul class="promo">
+                            Card01
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/comfort-hotel-fortaleza-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Comfort Hotel Fortaleza</h5>
+                                        <p>
+                                            A partir de <strong>Sáb 01 Out</strong> Até <strong>Qui 06 Out</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>130</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card01
+                            Card02
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/plaza-praia-suites-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Plaza Praia Suites Hotel</h5>
+                                        <p>
+                                            A partir de <strong>Sáb 24 Set</strong> Até <strong>Ter 04 Out</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>230</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card02
+                            Card03
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/Hotel_Brasil_tropical-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hotel Brasil Tropical</h5>
+                                        <p>
+                                            A partir de <strong>Seg 29 Ago</strong> Até <strong>Sex 02 Set</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>130</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card03
+                            Card04
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/portal_praia_hotel-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Portal da Praia Hotel</h5>
+                                        <p>
+                                            A partir de <strong>Ter 20 Set</strong> Até <strong>Sáb 24 Set</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>130</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card04
+                            Card05
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/maredomus-hotel-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Maredomus Hotel</h5>
+                                        <p>
+                                            A partir de <strong>Seg 29 Ago</strong> Até <strong>Ter 13 Ago</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>230</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card05
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 id="belo">BELO HORIZONTE</h4>
+                        <ul class="promo">
+                            Card01
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/comfort-hotel-fortaleza-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Comfort Hotel Fortaleza</h5>
+                                        <p>
+                                            A partir de <strong>Sáb 01 Out</strong> Até <strong>Qui 06 Out</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>130</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card01
+                            Card02
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/plaza-praia-suites-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Plaza Praia Suites Hotel</h5>
+                                        <p>
+                                            A partir de <strong>Sáb 24 Set</strong> Até <strong>Ter 04 Out</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>230</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card02
+                            Card03
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/Hotel_Brasil_tropical-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hotel Brasil Tropical</h5>
+                                        <p>
+                                            A partir de <strong>Seg 29 Ago</strong> Até <strong>Sex 02 Set</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>130</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card03
+                            Card04
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/portal_praia_hotel-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Portal da Praia Hotel</h5>
+                                        <p>
+                                            A partir de <strong>Ter 20 Set</strong> Até <strong>Sáb 24 Set</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>130</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card04
+                            Card05
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/maredomus-hotel-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Maredomus Hotel</h5>
+                                        <p>
+                                            A partir de <strong>Seg 29 Ago</strong> Até <strong>Ter 13 Ago</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>230</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card05
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 id="bra">BRASÍLIA</h4>
+                        <ul class="promo">
+                            Card01
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/comfort-hotel-fortaleza-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Comfort Hotel Fortaleza</h5>
+                                        <p>
+                                            A partir de <strong>Sáb 01 Out</strong> Até <strong>Qui 06 Out</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>130</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card01
+                            Card02
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/plaza-praia-suites-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Plaza Praia Suites Hotel</h5>
+                                        <p>
+                                            A partir de <strong>Sáb 24 Set</strong> Até <strong>Ter 04 Out</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>230</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card02
+                            Card03
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/Hotel_Brasil_tropical-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hotel Brasil Tropical</h5>
+                                        <p>
+                                            A partir de <strong>Seg 29 Ago</strong> Até <strong>Sex 02 Set</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>130</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card03
+                            Card04
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/portal_praia_hotel-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Portal da Praia Hotel</h5>
+                                        <p>
+                                            A partir de <strong>Ter 20 Set</strong> Até <strong>Sáb 24 Set</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>130</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card04
+                            Card05
+                            <li class="me-5 mb-4">
+                                <div class="card">
+                                    <img src="../IMG/fortaleza/maredomus-hotel-300x200.png" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">Maredomus Hotel</h5>
+                                        <p>
+                                            A partir de <strong>Seg 29 Ago</strong> Até <strong>Ter 13 Ago</strong>
+                                        </p>
+
+                                        <p class="small">Preço diária</p>
+                                        <p class="small text-secondary text-decoration-line-through">R$180</p>
+                                        <p>R$<big><strong>230</strong></big></p>
+                                    </div>
+                                </div>
+                            </li>
+                            Card05
+                        </ul>
+                    </div>
+                    {/* DESTINOS INTERNACIONAIS */}
+                </section>
+                {/* CARDS */}
+            </main>
+            <Footer />
+        </>
+    )
+}
