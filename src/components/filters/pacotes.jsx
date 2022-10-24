@@ -20,7 +20,7 @@ export default function PacotesFilter() {
                 <div className="row pb-4">
                     <div className="col-6 col-md-4 mb-2">
                         <label htmlFor="inputCity" className="form-label">Origem</label>
-                        <select id="cidades" className="form-control cidades">
+                        <select id="cidades" className="form-control">
                             {municipios.map(municipio => (
                                 <option key={municipio.id} value={municipio.id}>{municipio.nome} - {municipio.microrregiao.mesorregiao.UF.sigla}</option>
                             ))}
@@ -28,7 +28,7 @@ export default function PacotesFilter() {
                     </div>
                     <div className="col-6 col-md-4 mb-2">
                         <label htmlFor="inputCity" className="form-label">Destino</label>
-                        <select id="estado2" className="form-control cidades">
+                        <select id="estado2" className="form-control">
                             {municipios.map(municipio => (
                                 <option key={municipio.id} value={municipio.id}>{municipio.nome} - {municipio.microrregiao.mesorregiao.UF.sigla}</option>
                             ))}

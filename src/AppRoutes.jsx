@@ -9,6 +9,8 @@ import OfertasHos from "./views/ofertasHos";
 import Contato from "./views/contato";
 import Login from "./views/login";
 import Cadastro from "./views/cadastro";
+import ADMLogin from "./views/adm/login";
+import ADMCliente from "./views/adm/cliente";
 
 const AppRoutes = () => {
   
@@ -26,6 +28,9 @@ const AppRoutes = () => {
           <Route path='/contato' element={<Contato />} />
           <Route path='/login' element={<Login />} />
           <Route path='/cadastro' element={<Cadastro />} />
+
+          <Route path='/adm' element={<ADMLogin />} />
+          <Route path='/adm/clientes' element={<ADMCliente />} />
         </Routes>
       </AuthProvider>
     </Router>
