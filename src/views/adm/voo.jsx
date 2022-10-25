@@ -1,8 +1,10 @@
 import React from 'react'
+import NavbarADM from '../../components/navigate/navbarADM'
 
 const voo = () => {
   return (
-    <div>voo</div>
+    <div>
+    <NavbarADM /></div>
   )
 }
 

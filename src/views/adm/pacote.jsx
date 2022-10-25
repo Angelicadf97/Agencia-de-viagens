@@ -1,8 +1,10 @@
 import React from 'react'
+import NavbarADM from '../../components/navigate/navbarADM'
 
 const pacote = () => {
   return (
-    <div>pacote</div>
+    <div>
+    <NavbarADM /></div>
   )
 }
 

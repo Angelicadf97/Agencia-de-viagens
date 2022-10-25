@@ -1,8 +1,10 @@
 import React from 'react'
+import NavbarADM from '../../components/navigate/navbarADM'
 
 const companhia = () => {
   return (
-    <div>companhia</div>
+    <div>
+    <NavbarADM /></div>
   )
 }
 

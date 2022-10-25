@@ -32,8 +32,8 @@ const aeroporto = () => {
                             class="btn btn-primary" />
                     </div>
                 </form>
-                <table class="table">
                     <h3>Aeroportos cadastrados</h3>
+                <table class="table">
                     <thead>
                         <tr>
                             <th>ID</th>
