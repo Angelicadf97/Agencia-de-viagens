@@ -6,8 +6,8 @@ const cliente = () => {
     <div>
       <NavbarADM />
       <main class="container conteudo my-4 p-4">
-        <table class="table">
           <h1>Clientes cadastrados</h1>
+        <table class="table">
           <thead>
             <tr>
               <th>ID</th>
