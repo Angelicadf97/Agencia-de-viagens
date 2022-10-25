@@ -41,7 +41,7 @@ const Cadastro = () => {
                 
                 body: JSON.stringify(user)
             }
-            const response = await fetch("http://localhost:8080/cadastrar", config)
+            const response = await fetch("https://agencia-viagens.herokuapp.com/cadastrar", config)
             //const json = await response.json()
             if (response.ok) {
                 console.log("deu certo")
@@ -111,7 +111,7 @@ const Cadastro = () => {
                         
                         <div className="mb-3">
                             <label htmlFor="cidade" className="form-label"> Cidade </label>
-                            <select className="form-control cidade"
+                            <select className="form-control"
                                 id="cidade"
                                 name="cidade"
                                 onChange={(e) => setCidade(e.target.value)}>
