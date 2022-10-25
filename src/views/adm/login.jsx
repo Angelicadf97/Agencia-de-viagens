@@ -15,7 +15,7 @@ const Login = () => {
                                 className="form-control"
                                 name="email"
                                 id="email"
-                                placeholder="Email@email.com" required></input>
+                                placeholder="Email@email.com"></input>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputSenha" className="form-label">Senha</label>
@@ -32,7 +32,7 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="d-grid">
-                            <a href="/clientes" >
+                            <a href="./cliente" >
                                 <button type="submit"
                                     className="btn btn-primary">Conectar</button>
                             </a>
