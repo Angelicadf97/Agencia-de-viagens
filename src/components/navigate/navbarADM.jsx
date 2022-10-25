@@ -7,7 +7,7 @@ export default function NavbarADM() {
             <div className="container">
                 <nav class="navbar">
                     <div class="container">
-                        <a class="navbar-brand txcolor" href="adm.jsp">ADMINISTRADOR</a>
+                        <a class="navbar-brand txcolor" href="./cliente">ADMINISTRADOR</a>
                         <button class="navbar-toggler" type="button"
                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                             aria-controls="offcanvasNavbar">
