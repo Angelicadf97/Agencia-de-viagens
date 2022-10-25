@@ -11,6 +11,7 @@ import Login from "./views/login";
 import Cadastro from "./views/cadastro";
 import ADMLogin from "./views/adm/login";
 import ADMCliente from "./views/adm/cliente";
+import ADMAeroporto from "./views/adm/aeroporto";
 
 const AppRoutes = () => {
   
@@ -30,7 +31,8 @@ const AppRoutes = () => {
           <Route path='/cadastro' element={<Cadastro />} />
 
           <Route path='/adm' element={<ADMLogin />} />
-          <Route path='/adm/clientes' element={<ADMCliente />} />
+          <Route path='/adm/cliente' element={<ADMCliente />} />
+          <Route path='/adm/aeroporto' element={<ADMAeroporto />} />
         </Routes>
       </AuthProvider>
     </Router>
