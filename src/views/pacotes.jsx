@@ -4,6 +4,7 @@ import Navbar from '../components/navigate/navbar';
 import Footer from '../components/footer/footer';
 import PacotesFilter from '../components/filters/pacotes'
 import ListaCards from '../components/cardDest/cardList'
+import Carrossel from '../components/Carousel/carrossel';
 import fortaleza from '../assets/img/fortaleza-400x1600.png'
 import floripa from '../assets/img/florianopolis-400x1600.png'
 import recife from '../assets/img/recife-400x1600.png'
@@ -14,94 +15,14 @@ export default function Pacotes() {
         <>
             <Navbar />
             <main className="container conteudo my-4 px-4">
-                {/* FORMULARIO */}
                 <PacotesFilter />
-                {/* FORMULARIO */}
 
-                {/* CARROSSEL */}
-                <section>
-                    <h4>PACOTES PROMOCIONAIS</h4>
-                    <div>
-                        <div id="carouselExampleCaptions" className="carousel slide bgred mb-3"
-                            data-bs-ride="false">
-                            <div className="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselExampleCaptions"
-                                    data-bs-slide-to="0" className="active" aria-current="true"
-                                    aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselExampleCaptions"
-                                    data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselExampleCaptions"
-                                    data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                <button type="button" data-bs-target="#carouselExampleCaptions"
-                                    data-bs-slide-to="3" aria-label="Slide 4"></button>
-                            </div>
-                            <div className="carousel-inner text-center">
-                                <div className="carousel-item active">
-                                    <img src={fortaleza} alt="..." />
-                                    <div className="carousel-caption d-md-block bg-opacity-50 bg-black">
-                                        <h5 className="text-white">FORTALEZA-CE</h5>
-                                        <p>Fortaleza é um dos destinos turísticos mais cobiçados no
-                                            Brasil e, depois de conhecer a variedade de atrativos que a
-                                            cidade oferece, fica fácil entender o porquê desse sucesso.
-                                            Com o poder de agradar pessoas de todas as idades, a capital
-                                            cearense mistura muitas coisas de que o brasileiro gosta:
-                                            belezas naturais, cultura, mísica, diversão e uma culinária de
-                                            tirar o chapéu.</p>
-                                    </div>
-                                </div>
-                                <div className="carousel-item">
-                                    <img src={floripa} alt="..." />
-                                    <div className="carousel-caption d-md-block bg-opacity-50 bg-black">
-                                        <h5 className="text-white">FLORIANÁPOLIS-SC</h5>
-                                        <p>Florianápolis encanta por sua variedade de praias e pela
-                                            capacidade de agradar todo tipo de público. É uma capital que
-                                            cresceu em meio à natureza, que oferece belas paisagens
-                                            naturais por toda sua extensão, onde se pode curtir tanto o
-                                            movimento de uma capital efervescente quanto a tranquilidade
-                                            de uma cidade quase do interior.</p>
-                                    </div>
-                                </div>
-                                <div className="carousel-item">
-                                    <img src={recife} alt="..." />
-                                    <div className="carousel-caption d-md-block bg-opacity-50 bg-black">
-                                        <h5 className="text-white">RECIFE-PE</h5>
-                                        <p>O Recife é uma cidade que se destaca em inímeros
-                                            aspectos no Brasil. Conhecida por sua influência holandesa, a
-                                            "cidade dos arrecifes", que hoje é um dos centros urbanos mais
-                                            desenvolvidos do país, preserva muitos resquícios de seu
-                                            período colonial, garantindo que uma viagem pela cidade revele
-                                            não apenas as belezas naturais da costa brasileira, como
-                                            também sua faceta histórica.</p>
-                                    </div>
-                                </div>
-                                <div className="carousel-item">
-                                    <img src={rio} alt="..." />
-                                    <div className="carousel-caption d-md-block bg-opacity-50 bg-black">
-                                        <h5 className="text-white">RIO DE JANEIRO-RJ</h5>
-                                        <p>O Rio de Janeiro, � a cidade brasileira mais conhecida
-                                            no exterior tem a fama de possuir um povo alegre, �vido por
-                                            sol, praia, futebol e samba. Mas o Rio vai muito al�m disso:
-                                            tem hist�ria. Tornar-se sede da col�nia, abrigo da corte
-                                            portuguesa e depois capital do Brasil foi fundamental para que
-                                            n�o apenas a pr�pria cidade como o pa�s todo se desenvolvesse
-                                            em diversos aspectos.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <button className="carousel-control-prev" type="button"
-                                data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Previous</span>
-                            </button>
-                            <button className="carousel-control-next" type="button"
-                                data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                    </div>
-                </section>
-                {/* CARROSSEL */}
+                <Carrossel title={"PACOTES PROMOCIONAIS"} img1={fortaleza} img2={floripa} img3={recife} img4={rio}
+                    t1={"FORTALEZA-CE"} t2={"FLORIANÁPOLIS-SC"} t3={"RECIFE-PE"} t4={"RIO DE JANEIRO-RJ"} 
+                    des1={`Fortaleza é um dos destinos turísticos mais cobiçados no Brasil e, depois de conhecer a variedade de atrativos que a cidade oferece, fica fácil entender o porquê desse sucesso. Com o poder de agradar pessoas de todas as idades, a capital cearense mistura muitas coisas de que o brasileiro gosta: belezas naturais, cultura, mísica, diversão e uma culinária de tirar o chapéu.`}
+                    des2={`Florianápolis encanta por sua variedade de praias e pela capacidade de agradar todo tipo de público. É uma capital que cresceu em meio à natureza, que oferece belas paisagens movimento de uma capital efervescente quanto a tranquilidade de uma cidade quase do interior.`}
+                    des3={`O Recife é uma cidade que se destaca em inímeros aspectos no Brasil. Conhecida por sua influência holandesa, a"cidade dos arrecifes", que hoje é um dos centros urbanos mais desenvolvidos do país, preserva muitos resquícios de seu período colonial, garantindo que uma viagem pela cidade revele não apenas as belezas naturais da costa brasileira, como também sua faceta histórica.`}
+                    des4={`O Rio de Janeiro, é a cidade brasileira mais conhecida no exterior tem a fama de possuir um povo alegre, ávido por sol, praia, futebol e samba. Mas o Rio vai muito além disso: tem história. Tornar-se sede da colônia, abrigo da corte portuguesa e depois capital do Brasil foi fundamental para que não apenas a própria cidade como o país todo se desenvolvesse em diversos aspectos.`} />
 
                 {/* CARDS */}
                 <section>
