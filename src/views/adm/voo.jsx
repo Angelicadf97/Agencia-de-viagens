@@ -4,7 +4,8 @@ import NavbarADM from '../../components/navigate/navbarADM'
 const voo = () => {
   return (
     <div>
-    <NavbarADM /></div>
+    <NavbarADM />
+    </div>
   )
 }
 
