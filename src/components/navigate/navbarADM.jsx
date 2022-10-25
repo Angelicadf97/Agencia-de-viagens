@@ -22,14 +22,14 @@ export default function NavbarADM() {
                             </div>
                             <div class="offcanvas-body">
                                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                    <li class="nav-item"><a class="nav-link" href="./adm/cliente">Clientes</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="./adm/aeroporto">Aeroportos</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="./adm/hospedagem">Hospedagens</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="./adm/companhia">Companhias</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="./adm/pacote">Pacotes</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="./adm/voo">Voos</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="./adm/reserva">Reserva</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="./adm">Sair</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="./cliente">Clientes</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="./aeroporto">Aeroportos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="./hospedagem">Hospedagens</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="./companhia">Companhias</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="./pacote">Pacotes</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="./voo">Voos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="./reserva">Reserva</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="./">Sair</a></li>
                                 </ul>
                             </div>
                         </div>
