@@ -1,7 +1,45 @@
-import React from 'react'
+import React from 'react';
 import NavbarADM from '../../components/navigate/navbarADM'
 
-const companhia = () => {
+const Companhia = () => {
+    // const [nome, setNome] = useState("");
+    // const [cnpj, setCnpj] = useState("");
+    // const [comp, setComp] = useState([]);
+    
+    // useEffect(() => {
+    //     async function fetchMyAPI() {
+    //         const response = await fetch('https://agencia-viagens.herokuapp.com/adm/companhia');
+    //         setComp(await response.json());
+    //     }
+    //     fetchMyAPI();
+    // }, []);
+
+    // const submit = async (e) => {
+    //     e.preventDefault()
+    //     console.log(JSON.stringify(comp))
+    //     try {
+    //         const config = {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json',
+    //             },
+                
+    //             body: JSON.stringify(comp)
+    //         }
+    //         const response = await fetch("https://agencia-viagens.herokuapp.com/adm/companhia/cadastrar", config)
+    //         //const json = await response.json()
+    //         if (response.ok) {
+    //             console.log("deu certo")
+    //             return response
+    //         } else {
+    //             console.log("deu errado")
+    //         }
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+
     return (
         <div>
             <NavbarADM />
@@ -94,4 +132,4 @@ const companhia = () => {
     )
 }
 
-export default companhia
+export default Companhia;
