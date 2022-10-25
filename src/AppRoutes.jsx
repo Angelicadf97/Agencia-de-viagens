@@ -9,9 +9,14 @@ import OfertasHos from "./views/ofertasHos";
 import Contato from "./views/contato";
 import Login from "./views/login";
 import Cadastro from "./views/cadastro";
-import ADMLogin from "./views/adm/login";
-import ADMCliente from "./views/adm/cliente";
-import ADMAeroporto from "./views/adm/aeroporto";
+import LoginADM from "./views/adm/login";
+import ClienteADM from "./views/adm/cliente";
+import AeroportoADM from "./views/adm/aeroporto";
+import CompanhiaADM from "./views/adm/companhia";
+import HospedagemADM from "./views/adm/hospedagem";
+import PacoteADM from "./views/adm/pacote";
+import ReservaADM from "./views/adm/reserva";
+import VooADM from "./views/adm/voo";
 
 const AppRoutes = () => {
   
@@ -30,9 +35,14 @@ const AppRoutes = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/cadastro' element={<Cadastro />} />
 
-          <Route path='/adm' element={<ADMLogin />} />
-          <Route path='/adm/cliente' element={<ADMCliente />} />
-          <Route path='/adm/aeroporto' element={<ADMAeroporto />} />
+          <Route path='/adm' element={<LoginADM />} />
+          <Route path='/adm/cliente' element={<ClienteADM />} />
+          <Route path='/adm/aeroporto' element={<AeroportoADM />} />
+          <Route path='/adm/companhia' element={<CompanhiaADM />} />
+          <Route path='/adm/pacote' element={<PacoteADM />} />
+          <Route path='/adm/reserva' element={<ReservaADM />} />
+          <Route path='/adm/hospedagem' element={<HospedagemADM />} />
+          <Route path='/adm/voo' element={<VooADM />} />
         </Routes>
       </AuthProvider>
     </Router>
