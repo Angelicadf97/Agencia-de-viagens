@@ -2,6 +2,12 @@ import React from 'react'
 
 import Navbar from '../components/navigate/navbar';
 import Footer from '../components/footer/footer';
+import ListaCards from '../components/cardDest/cardList'
+import curitiba from '../assets/img/curitiba-300x200.png'
+import foz from '../assets/img/foz_do_iguacu-300x200.png'
+import jalapao from '../assets/img/jalapao-300x200.png'
+import maceio from '../assets/img/maceio-300x200.png'
+import ouroPreto from '../assets/img/ouro_preto-300x200.png'
 
 export default function Voos() {
     return (
