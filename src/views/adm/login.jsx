@@ -32,7 +32,7 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="d-grid">
-                            <a href="./cliente" >
+                            <a href="./adm/cliente" >
                                 <button type="button"
                                     className="btn btn-primary">Conectar</button>
                             </a>
