@@ -61,9 +61,6 @@ export default function Navbar() {
                                         <li>
                                             <a className="dropdown-item" href="./contato">Entre em contato</a>
                                         </li>
-                                        <li>
-                                            <a className="dropdown-item" href="./adm/cliente">ADM</a>
-                                        </li>
                                     </>
                                 }
                             </ul>

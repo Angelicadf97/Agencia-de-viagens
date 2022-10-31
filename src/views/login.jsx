@@ -48,7 +48,7 @@ const Login = () => {
               onChange={(e) => setSenha(e.target.value)}/>
             </div>
             <div className="form-check mb-3">
-              <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked />
+              <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
               <label className="form-check-label" htmlFor="flexCheckChecked">
                 Manter conectado
               </label>

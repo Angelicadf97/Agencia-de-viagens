@@ -1,11 +1,11 @@
 import axios from "axios"
 
-export const api = axios.create({
+export const admApi = axios.create({
 
   baseURL: "http://localhost:8080/",
 })
 export const createAuth = async (email, senha) => {
 
-  return api.post("/auth", { email, senha })
+  return admApi.post("/user/auth", { email, senha })
 }
 
