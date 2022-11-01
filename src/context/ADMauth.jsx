@@ -30,6 +30,7 @@ export const ADMAuthProvider = ({ children }) => {
     const response = await createAuth(email, password)
     const token = response.data.token
     console.log(response.data)
+    console.log(response.data.token)
 
     // api
 
@@ -42,6 +43,7 @@ export const ADMAuthProvider = ({ children }) => {
 
     localStorage.setItem("user", JSON.stringify(loggedUser))
     admApi.defaults.headers.Authorization = `Bearer ${token}`
+    console.log(admApi.defaults.headers.Authorization)
     setUser({ loggedUser })
 
     navigate("/adm/cliente")

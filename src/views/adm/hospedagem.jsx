@@ -1,55 +1,176 @@
-import React from 'react'
-import NavbarADM from '../../components/navigate/navbarADM'
+import React, { useState, useEffect } from 'react';
+import NavbarADM from '../../components/navigate/navbarADM';
 
-const hospedagem = () => {
+const Hospedagem = () => {
+    const [nome, setNome] = useState("");
+    const [cnpj, setCnpj] = useState("");
+    const [tipo, setTipo] = useState("");
+    const [cidade, setCidade] = useState("");
+    const [preco, setPreco] = useState("");
+    const [desconto, setDesconto] = useState("");
+    // const [imagem, setImagem] = useState("");
+    const [hospedagens, setHospedagens] = useState([]);
+
+    // const fortmatResponse = (res) => {
+    //     return JSON.stringify(res, null, 2);
+    // };
+
+    useEffect(() => {
+        async function fetchMyAPI() {
+            const obj = localStorage.getItem("user")
+            const response = await fetch('http://localhost:8080/adm/hospedagens', {
+                headers: {
+                    'Authorization': 'Bearer ' + JSON.parse(obj).token
+                }
+            });
+            setHospedagens(await response.json());
+        }
+        fetchMyAPI();
+    }, []);
+
+
+    const hospedagem = {
+        id: 0,
+        cnpj: cnpj,
+        nome: nome,
+        tipo: tipo,
+        cidade: cidade,
+        preco: preco,
+        desconto: desconto
+        // imagem: imagem
+    }
+    const submit = async (e) => {
+        e.preventDefault()
+        try {
+            const obj = localStorage.getItem("user")
+            const config = {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + JSON.parse(obj).token
+                },
+
+                body: JSON.stringify(hospedagem)
+            }
+            const response = await fetch("http://localhost:8080/adm/hospedagens", config)
+            //const json = await response.json()
+            if (response.ok) {
+                console.log("deu certo")
+                return response
+            } else {
+                console.log("deu errado")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const [municipios, setMunicipios] = useState([]);
+    // API
+    useEffect(() => {
+        async function fetchMyAPI() {
+            const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/`);
+            setMunicipios(await response.json());
+        }
+        fetchMyAPI();
+    }, []);
+
+    // const [city, setCity] = useState([]);
+    // async function getCidadeById() {
+    //     const id = hospedagem.id.current.value;
+    //     console.log(id)
+    //     if (id) {
+    //         const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${id}`);
+    //         const result = {
+    //             cidade: response.cidade,
+    //             uf: response.uf
+    //         };
+    //         setCity(fortmatResponse(result));
+    //     }
+
+    // }getCidadeById();
+    let idCity = hospedagem.cidade.value;
+    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${idCity}`)
+    .then(response =>{response.json()})
+    .then(data => console.log(data))
+
     return (
         <div>
             <NavbarADM />
-            <main class="container conteudo my-4 p-4">
-                <h1 class="mb-4">Hospedagens</h1>
-                <form class="my-4" action="./hospedagem-save">
+            <main className="container conteudo my-4 p-4">
+                <h1 className="mb-4">Hospedagens</h1>
+                <form className="my-4" onSubmit={submit}>
                     <h3>Cadastro de hospedagem</h3>
-                    <div class="row mb-3">
-                        <div class="col">
-                            <label for="name" class="form-label">Nome da Hospedagem</label> <input
-                                type="text" class="form-control" id="name" name="name" required />
-                        </div>
-                        <div class="col">
-                            <label for="cnpj" class="form-label">CNPJ</label> <input
-                                type="text" class="form-control" id="cnpj" name="cnpj" required
-                                placeholder="00.000.000/0000-00" />
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col">
-                            <label for="type" class="form-label">Tipo de Hospedagem</label> <select
-                                class="form-select" id="type" name="type" required>
-                                <option selected>Escolha um tipo de hospedagem</option>
-                                <option value="Hostel">Hostel</option>
-                                <option value="Hotel">Hotel</option>
-                                <option value="Pousada">Pousada</option>
-                                <option value="Resort">Resort</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label for="price" class="form-label">Valor da diária</label> <input
-                                type="number" class="form-control" id="price" name="price"
+                    <div className="row mb-3">
+                        <div className="col">
+                            <label htmlFor="name" className="form-label">Nome da Hospedagem</label>
+                            <input type="text" className="form-control"
+                                id="name"
+                                name="name"
+                                onChange={(e) => setNome(e.target.value)}
                                 required />
                         </div>
-                        <div class="form-group col">
-                            <label for="idLocal" class="form-label"> Cidade </label> <select
-                                id="idLocal" name="idLocal" class="form-select">
-                                <option value="DEFAULT">Escolha uma cidade</option>
+                        <div className="col">
+                            <label htmlFor="cnpj" className="form-label">CNPJ</label>
+                            <input type="text" className="form-control"
+                                id="cnpj"
+                                name="cnpj"
+                                required
+                                placeholder="00.000.000/0000-00"
+                                onChange={(e) => setCnpj(e.target.value)} />
+                        </div>
+                    </div>
+                    <div className="row mb-4">
+                        <div className="col">
+                            <label htmlFor="type" className="form-label">Tipo de Hospedagem</label>
+                            <select className="form-select"
+                                id="type"
+                                name="type"
+                                required
+                                onChange={(e) => setTipo(e.target.value)}>
+                                <option selected>Escolha um tipo de hospedagem</option>
+                                <option value="hostel">Hostel</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="pousada">Pousada</option>
+                                <option value="resort">Resort</option>
                             </select>
                         </div>
-                        <div class="mt-4">
+                        <div className="col">
+                            <label htmlFor="price" className="form-label">Valor da diária</label>
+                            <input type="number" className="form-control"
+                                id="price"
+                                name="price"
+                                required
+                                onChange={(e) => setPreco(e.target.value)} />
+                        </div>
+                        <div className="col">
+                            <label htmlFor="desconto" className="form-label">Desconto</label>
+                            <input type="number" className="form-control"
+                                id="desconto"
+                                name="desconto"
+                                required
+                                onChange={(e) => setDesconto(e.target.value)} />
+                        </div>
+                        <div className="form-group col">
+                            <label htmlFor="cidade" className="form-label"> Cidade </label>
+                            <select className="form-control"
+                                id="cidade"
+                                name="cidade"
+                                onChange={(e) => setCidade(e.target.value)}>
+                                {municipios.map(municipio => (
+                                    <option key={municipio.id} value={municipio.id}>{municipio.nome} - {municipio.microrregiao.mesorregiao.UF.sigla}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="mt-4">
                             <input type="submit" value="Cadastrar"
-                                class="btn btn-primary" />
+                                className="btn btn-primary" />
                         </div>
                     </div>
                 </form>
-                <h3>Pacotes cadastrados</h3>
-                <table class="table">
+                <h3>Hospedagens cadastradas</h3>
+                <table className="table">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -63,80 +184,82 @@ const hospedagem = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td class="d-flex justify-content-start align-items-center">
-                                <div>
-
-                                    <button class="btn" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdrop<%=h.getId()%>">
-                                        <i class="gg-pen"></i>
-                                    </button>
+                        {hospedagens.map(hos => (
+                            <tr key={hos.id}>
+                                <td>{hos.id}</td>
+                                <td>{hos.cnpj}</td>
+                                <td>{hos.nome}</td>
+                                <td>{hos.tipo}</td>
+                                <td>{hos.preco}</td>
+                                <td >{}</td>
+                                <td >{}</td>
 
 
-                                    <div class="modal fade" id="staticBackdrop<%=h.getId()%>"
-                                        data-bs-backdrop="static" data-bs-keyboard="false"
-                                        tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="staticBackdropLabel">Atualização</h5>
-                                                    <button type="button" class="btn-close"
-                                                        data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <form action="./hospedagem-update">
-                                                    <div class="modal-body">
-                                                        <label for="idUpdate" class="form-label">ID</label>
-                                                        <input type="text" class="form-control mb-3" id="idUpdate"
-                                                            name="idUpdate" value="<%=h.getId()%>" readonly />
-                                                        <label for="nameUpdate" class="form-label">Nome da Hospedagem</label>
-                                                        <input type="text" class="form-control mb-3"
-                                                            id="nameUpdate" name="nameUpdate" value="<%=h.getNome()%>"
-                                                            required />
-                                                        <label for="cnpjUpdate" class="form-label">CNPJ</label>
-                                                        <input type="text" class="form-control" id="cnpjUpdate"
-                                                            name="cnpjUpdate" readonly
-                                                            value="<%=h.getCnpj()%>" />
-                                                        <label for="typeUpdate" class="form-label">Tipo de Hospedagem</label> <select
-                                                            class="form-select" id="typeUpdate" name="typeUpdate" required>
-                                                            <option selected>Escolha um tipo de hospedagem</option>
-                                                            <option value="Hostel">Hostel</option>
-                                                            <option value="Hotel">Hotel</option>
-                                                            <option value="Pousada">Pousada</option>
-                                                            <option value="Resort">Resort</option>
-                                                        </select>
-                                                        <label for="priceUpdate" class="form-label">Valor da
-                                                            diária</label>
-                                                        <input type="number" class="form-control"
-                                                            id="priceUpdate" name="priceUpdate" required value="<%=h.getPrecoDia()%>" />
-                                                        <div class="form-group">
-                                                            <label for="idLocalUpdate" class="form-label"> Cidade </label> <select
-                                                                id="idLocalUpdate" name="idLocalUpdate" class="form-select" >
-                                                                <option value="DEFAULT">Escolha uma cidade</option>
+                                <td className="d-flex justify-content-start align-items-center">
+                                    <div>
+                                        <button className="btn" type="button" data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop<%=h.getId()%>">
+                                            <i className="gg-pen"></i>
+                                        </button>
+
+                                        <div className="modal fade" id="staticBackdrop<%=h.getId()%>"
+                                            data-bs-backdrop="static" data-bs-keyboard="false"
+                                            tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                            aria-hidden="true">
+                                            <div className="modal-dialog">
+                                                <div className="modal-content">
+                                                    <div className="modal-header">
+                                                        <h5 className="modal-title" id="staticBackdropLabel">Atualização</h5>
+                                                        <button type="button" className="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <form action="./hospedagem-update">
+                                                        <div className="modal-body">
+                                                            <label htmlFor="idUpdate" className="form-label">ID</label>
+                                                            <input type="text" className="form-control mb-3" id="idUpdate"
+                                                                name="idUpdate" value="<%=h.getId()%>" readOnly />
+                                                            <label htmlFor="nameUpdate" className="form-label">Nome da Hospedagem</label>
+                                                            <input type="text" className="form-control mb-3"
+                                                                id="nameUpdate" name="nameUpdate" value="<%=h.getNome()%>"
+                                                                required />
+                                                            <label htmlFor="cnpjUpdate" className="form-label">CNPJ</label>
+                                                            <input type="text" className="form-control" id="cnpjUpdate"
+                                                                name="cnpjUpdate" readOnly
+                                                                value="<%=h.getCnpj()%>" />
+                                                            <label htmlFor="typeUpdate" className="form-label">Tipo de Hospedagem</label> <select
+                                                                className="form-select" id="typeUpdate" name="typeUpdate" required>
+                                                                <option selected>Escolha um tipo de hospedagem</option>
+                                                                <option value="Hostel">Hostel</option>
+                                                                <option value="Hotel">Hotel</option>
+                                                                <option value="Pousada">Pousada</option>
+                                                                <option value="Resort">Resort</option>
                                                             </select>
+                                                            <label htmlFor="priceUpdate" className="form-label">Valor da
+                                                                diária</label>
+                                                            <input type="number" className="form-control"
+                                                                id="priceUpdate" name="priceUpdate" required value="<%=h.getPrecoDia()%>" />
+                                                            <div className="form-group">
+                                                                <label htmlFor="idLocalUpdate" className="form-label"> Cidade </label> <select
+                                                                    id="idLocalUpdate" name="idLocalUpdate" className="form-select" >
+                                                                    <option value="DEFAULT">Escolha uma cidade</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Cancelar</button>
-                                                        <button class="btn btn-primary" type="submit">Atualizar</button>
-                                                    </div>
-                                                </form>
+                                                        <div className="modal-footer">
+                                                            <button type="button" className="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cancelar</button>
+                                                            <button className="btn btn-primary" type="submit">Atualizar</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div> <a href="./hospedagem-delet?id=<%=h.getId()%>"
-                                    onclick="return confirm('Deseja Excluir?')" class="btn"><i
-                                        class="gg-close"></i></a>
-                            </td>
-                        </tr>
+                                    </div> <a href="./hospedagem-delet?id=<%=h.getId()%>"
+                                        onclick="return confirm('Deseja Excluir?')" className="btn"><i
+                                            className="gg-close"></i></a>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </main>
@@ -144,4 +267,4 @@ const hospedagem = () => {
     )
 }
 
-export default hospedagem
+export default Hospedagem

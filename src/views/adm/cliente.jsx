@@ -1,7 +1,22 @@
-import React from 'react'
+import React, {  } from 'react';
 import NavbarADM from '../../components/navigate/navbarADM'
 
 const cliente = () => {
+  // const [comp, setComp] = useState([]);
+
+  //   useEffect(() => {
+  //       async function fetchMyAPI() {
+  //           const obj = localStorage.getItem("user")
+  //           const response = await fetch('http://localhost:8080/',{
+  //               headers:{
+  //                   'Authorization': 'Bearer '+JSON.parse(obj).token
+  //               }
+  //           });
+  //           setComp(await response.json());
+  //       }
+  //       fetchMyAPI();
+  //   }, []);
+
   return (
     <div>
       <NavbarADM />

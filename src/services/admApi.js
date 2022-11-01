@@ -9,3 +9,8 @@ export const createAuth = async (email, senha) => {
   return admApi.post("/user/auth", { email, senha })
 }
 
+export const getToken = () => {
+
+  return 
+}
+
