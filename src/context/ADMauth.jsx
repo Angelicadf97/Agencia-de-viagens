@@ -38,6 +38,7 @@ export const ADMAuthProvider = ({ children }) => {
 
       id: response.data.idUser,
       email: response.data.emailUser,
+      nome: response.data.nomeUser,
       token: token
     }
 

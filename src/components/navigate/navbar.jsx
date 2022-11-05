@@ -49,7 +49,13 @@ export default function Navbar() {
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 {authenticated
                                     ?
-                                    <p className="dropdown-item" onClick={handleLogout}>Sair</p>
+                                    <>
+                                        <li>
+                                            Olá, {JSON.parse(localStorage.getItem("user")).nome}!
+                                        </li>
+                                        <li>
+                                            <p className="dropdown-item" onClick={handleLogout}>Sair</p>
+                                        </li></>
                                     :
                                     <>
                                         <li>

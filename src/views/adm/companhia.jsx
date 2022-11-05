@@ -1,36 +1,80 @@
 import React, { useState, useEffect } from 'react';
-import NavbarADM from '../../components/navigate/navbarADM'
+import { useParams } from "react-router-dom";
+import NavbarADM from '../../components/navigate/navbarADM';
+import CompanhiaService from "../../services/CompanhiaService";
 
 const Companhia = () => {
     const [nome, setNome] = useState("");
     const [cnpj, setCnpj] = useState("");
-    const [comp, setComp] = useState([]);
+    const { id } = useParams();
+    const [companhias, setCompanhias] = useState([]);
 
     useEffect(() => {
-        async function fetchMyAPI() {
-            const obj = localStorage.getItem("user")
-            const response = await fetch('http://localhost:8080/adm/companhias/', {
-                headers: {
-
-                    'Authorization': 'Bearer ' + JSON.parse(obj).token
-                }
-            });
-            setComp(await response.json());
-        }
-        fetchMyAPI();
+        getAllComp();
     }, []);
 
+    const getAllComp = () => {
+        CompanhiaService.getAllComp()
+        .then((response) => {
+            setCompanhias(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+
+    const deletar = (id) => {
+        CompanhiaService.deleteComp(id)
+        .then(() => {
+            getAllComp();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    };
+
+    // const createOrUpdateComp = (e) => {
+    //     e.preventDefault();
+    //     const companhia = {
+    //         id: 0,
+    //         nome: nome,
+    //         cnpj: cnpj
+    //     };
+
+    //     if(id) {
+    //         //update
+    //         CompanhiaService.updateComp(id, companhia)
+    //     } else {
+    //         CompanhiaService.createComp(companhia)
+    //     };
+    // }
+
+    useEffect (() => {
+        function getCompById() {
+            if(id){
+                CompanhiaService.getCompById(id)
+                .then((response) => {
+                    setNome(response.data.nome);
+                    setCnpj(response.data.cnpj)
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+            }
+        }
+        getCompById()
+    }, [id]);
 
     const companhia = {
-        id: 0,
         cnpj: cnpj,
         nome: nome
     }
+
     const submit = async (e) => {
         e.preventDefault()
-        console.log(JSON.stringify(companhia))
         try {
             const obj = localStorage.getItem("user")
+            const url = "http://localhost:8080/adm/companhias/";
             const config = {
                 method: 'POST',
                 headers: {
@@ -40,21 +84,17 @@ const Companhia = () => {
                 },
                 body: JSON.stringify(companhia)
             }
-            const response = await fetch("http://localhost:8080/adm/companhias/", config)
-            //const json = await response.json()
+            const response = await fetch(url, config)
             if (response.ok) {
-                console.log("deu certo")
                 return response
-            } else {
-                console.log("deu errado")
             }
         } catch (error) {
             console.log(error)
         }
     }
+    
     const update = async (id, e) => {
         e.preventDefault()
-        console.log(JSON.stringify(companhia))
         try {
             const obj = localStorage.getItem("user")
             const config = {
@@ -68,37 +108,19 @@ const Companhia = () => {
             }
             const response = await fetch(`http://localhost:8080/adm/companhias/${id}`, config)
             if (response.ok) {
-                console.log("deu certo")
                 return response
-            } else {
-                console.log("deu errado")
             }
         } catch (error) {
             console.log(error)
         }
     }
-    const deletar = async (id) => {
-        const obj = localStorage.getItem("user")
-        const config = {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + JSON.parse(obj).token
-            },
-        }
-        const response = await fetch(`http://localhost:8080/adm/companhias/${id}`, config)
-        return response;
-    }
-
-
 
     return (
         <div>
             <NavbarADM />
             <main className="container conteudo my-4 p-4">
                 <h1 className="mb-4">Companhias</h1>
-                <form className="my-4" onSubmit={submit}>
+                <form className="my-4">
                     <h3>Cadastro de companhia</h3>
                     <div className="row mb-3">
                         <div className="col">
@@ -121,7 +143,7 @@ const Companhia = () => {
                         </div>
                     </div>
                     <div className="mt-4">
-                        <button type="submit" className="btn btn-primary">Cadastrar</button>
+                        <button onClick={(e) => submit(e)} type="submit" className="btn btn-primary">Cadastrar</button>
                     </div>
                 </form>
                 <h3>Companhias cadastradas</h3>
@@ -135,7 +157,7 @@ const Companhia = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {comp.map(com => (
+                        {companhias.map(com => (
                             <tr key={com.id}>
                                 <td>{com.id}</td>
                                 <td>{com.cnpj}</td>
@@ -155,15 +177,13 @@ const Companhia = () => {
                                                         <button type="button" className="btn-close"
                                                             data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <form onSubmit={update}>
+                                                    <form>
                                                         <div className="modal-body">
                                                             <label htmlFor="idUpdate" className="form-label">ID</label>
                                                             <input
                                                                 type="text" className="form-control mb-3"
-                                                                id="idUpdate"
-                                                                name="idUpdate"
-                                                                defaultValue={com.id}
-                                                                readOnly />
+                                                                value={com.id}
+                                                                readOnly/>
                                                             <label htmlFor="nameUpdate" className="form-label">Nome da Companhia</label>
                                                             <input type="text" className="form-control mb-3"
                                                                 id="nameUpdate"
@@ -176,12 +196,13 @@ const Companhia = () => {
                                                                 id="cnpjUpdate"
                                                                 name="cnpjUpdate"
                                                                 defaultValue={com.cnpj}
-                                                                onChange={(e) => setCnpj(e.target.value)} />
+                                                                onChange={(e) => setCnpj(e.target.value)}
+                                                                required />
                                                         </div>
                                                         <div className="modal-footer">
                                                             <button type="button" className="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="submit" className="btn btn-primary">Atualizar</button>
+                                                            <button onClick={(e) => update(com.id, e)}  type="submit" className="btn btn-primary" data-bs-dismiss="modal">Atualizar</button>
                                                         </div>
                                                     </form>
                                                 </div>

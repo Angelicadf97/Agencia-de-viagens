@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import NavbarADM from '../../components/navigate/navbarADM';
 
 const Hospedagem = () => {
@@ -8,6 +9,8 @@ const Hospedagem = () => {
     const [cidade, setCidade] = useState("");
     const [preco, setPreco] = useState("");
     const [desconto, setDesconto] = useState("");
+    
+    const { id } = useParams();
     // const [imagem, setImagem] = useState("");
     const [hospedagens, setHospedagens] = useState([]);
 
@@ -18,7 +21,7 @@ const Hospedagem = () => {
     useEffect(() => {
         async function fetchMyAPI() {
             const obj = localStorage.getItem("user")
-            const response = await fetch('http://localhost:8080/adm/hospedagens', {
+            const response = await fetch('http://localhost:8080/adm/hospedagens/', {
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(obj).token
                 }
@@ -53,7 +56,7 @@ const Hospedagem = () => {
 
                 body: JSON.stringify(hospedagem)
             }
-            const response = await fetch("http://localhost:8080/adm/hospedagens", config)
+            const response = await fetch("http://localhost:8080/adm/hospedagens/", config)
             //const json = await response.json()
             if (response.ok) {
                 console.log("deu certo")
@@ -90,10 +93,28 @@ const Hospedagem = () => {
     //     }
 
     // }getCidadeById();
-    let idCity = hospedagem.cidade.value;
-    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${idCity}`)
-    .then(response =>{response.json()})
-    .then(data => console.log(data))
+
+    useEffect(() => {
+        function getCityById() {
+            if (id) {
+                const cityDate = fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${345326}`)
+                    .then((response) => {
+                        setCNome(response.data.nome);
+                        setCUf(response.data.uf)
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            }
+
+        }
+        getCityById()
+    }, [id]);
+
+
+    const [cNome, setCNome] = useState("");
+    const [cUf, setCUf] = useState("");
+
 
     return (
         <div>
@@ -130,10 +151,10 @@ const Hospedagem = () => {
                                 required
                                 onChange={(e) => setTipo(e.target.value)}>
                                 <option selected>Escolha um tipo de hospedagem</option>
-                                <option value="hostel">Hostel</option>
-                                <option value="hotel">Hotel</option>
-                                <option value="pousada">Pousada</option>
-                                <option value="resort">Resort</option>
+                                <option defaultValue="hostel">Hostel</option>
+                                <option defaultValue="hotel">Hotel</option>
+                                <option defaultValue="pousada">Pousada</option>
+                                <option defaultValue="resort">Resort</option>
                             </select>
                         </div>
                         <div className="col">
@@ -164,7 +185,7 @@ const Hospedagem = () => {
                             </select>
                         </div>
                         <div className="mt-4">
-                            <input type="submit" value="Cadastrar"
+                            <input type="submit" defaultValue="Cadastrar"
                                 className="btn btn-primary" />
                         </div>
                     </div>
@@ -178,6 +199,7 @@ const Hospedagem = () => {
                             <th>Nome</th>
                             <th>Tipo</th>
                             <th>Valor da diária</th>
+                            <th>Desconto</th>
                             <th>Cidade</th>
                             <th>Uf</th>
                             <th>Ações</th>
@@ -190,11 +212,10 @@ const Hospedagem = () => {
                                 <td>{hos.cnpj}</td>
                                 <td>{hos.nome}</td>
                                 <td>{hos.tipo}</td>
-                                <td>{hos.preco}</td>
-                                <td >{}</td>
-                                <td >{}</td>
-
-
+                                <td>R$ {hos.preco_dia}</td>
+                                <td>{hos.desconto}%</td>
+                                <td>{hos.cidade}</td>
+                                <td>{hos.cidade}</td>
                                 <td className="d-flex justify-content-start align-items-center">
                                     <div>
                                         <button className="btn" type="button" data-bs-toggle="modal"
@@ -217,31 +238,31 @@ const Hospedagem = () => {
                                                         <div className="modal-body">
                                                             <label htmlFor="idUpdate" className="form-label">ID</label>
                                                             <input type="text" className="form-control mb-3" id="idUpdate"
-                                                                name="idUpdate" value="<%=h.getId()%>" readOnly />
+                                                                name="idUpdate" defaultValue="<%=h.getId()%>" readOnly />
                                                             <label htmlFor="nameUpdate" className="form-label">Nome da Hospedagem</label>
                                                             <input type="text" className="form-control mb-3"
-                                                                id="nameUpdate" name="nameUpdate" value="<%=h.getNome()%>"
+                                                                id="nameUpdate" name="nameUpdate" defaultValue="<%=h.getNome()%>"
                                                                 required />
                                                             <label htmlFor="cnpjUpdate" className="form-label">CNPJ</label>
                                                             <input type="text" className="form-control" id="cnpjUpdate"
                                                                 name="cnpjUpdate" readOnly
-                                                                value="<%=h.getCnpj()%>" />
+                                                                defaultValue="<%=h.getCnpj()%>" />
                                                             <label htmlFor="typeUpdate" className="form-label">Tipo de Hospedagem</label> <select
                                                                 className="form-select" id="typeUpdate" name="typeUpdate" required>
                                                                 <option selected>Escolha um tipo de hospedagem</option>
-                                                                <option value="Hostel">Hostel</option>
-                                                                <option value="Hotel">Hotel</option>
-                                                                <option value="Pousada">Pousada</option>
-                                                                <option value="Resort">Resort</option>
+                                                                <option defaultValue="Hostel">Hostel</option>
+                                                                <option defaultValue="Hotel">Hotel</option>
+                                                                <option defaultValue="Pousada">Pousada</option>
+                                                                <option defaultValue="Resort">Resort</option>
                                                             </select>
                                                             <label htmlFor="priceUpdate" className="form-label">Valor da
                                                                 diária</label>
                                                             <input type="number" className="form-control"
-                                                                id="priceUpdate" name="priceUpdate" required value="<%=h.getPrecoDia()%>" />
+                                                                id="priceUpdate" name="priceUpdate" required defaultValue="<%=h.getPrecoDia()%>" />
                                                             <div className="form-group">
                                                                 <label htmlFor="idLocalUpdate" className="form-label"> Cidade </label> <select
                                                                     id="idLocalUpdate" name="idLocalUpdate" className="form-select" >
-                                                                    <option value="DEFAULT">Escolha uma cidade</option>
+                                                                    <option defaultValue="DEFAULT">Escolha uma cidade</option>
                                                                 </select>
                                                             </div>
                                                         </div>

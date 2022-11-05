@@ -13,7 +13,7 @@ export default function NavbarADM() {
             <div className="container">
                 <nav className="navbar">
                     <div className="container">
-                        <a className="navbar-brand txcolor" href="./cliente">ADMINISTRADOR</a>
+                        <a className="navbar-brand txcolor" href="./cliente">Olá, {JSON.parse(localStorage.getItem("user")).nome}!</a>
                         <button className="navbar-toggler" type="button"
                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                             aria-controls="offcanvasNavbar">
