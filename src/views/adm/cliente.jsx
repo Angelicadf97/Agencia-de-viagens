@@ -16,24 +16,7 @@ const Cliente = () => {
     }
     fetchMyAPI();
   }, []);
-
-  // const fortmatResponse = (res) => {
-  //   return JSON.stringify(res, null, 2);
-  // };
-  const [city, setCity] = useState([]);
-  useEffect((id) => {
-    async function getCidadeById() {
-      console.log(id)
-      const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${id}`);
-      // const result = {
-      //   cidade: response.cidade,
-      //   uf: response.uf
-      // };
-      setCity(await response.json());
-    }
-    getCidadeById();
-  }, []);
-
+  
   return (
     <div>
       <NavbarADM />
@@ -44,8 +27,6 @@ const Cliente = () => {
             <tr>
               <th>ID</th>
               <th>Nome</th>
-              <th>CPF</th>
-              <th>Cidade</th>
               <th>Email</th>
             </tr>
           </thead>
@@ -54,8 +35,6 @@ const Cliente = () => {
               <tr key={cliente.id}>
                 <td>{cliente.id}</td>
                 <td>{cliente.nome}</td>
-                <td>{cliente.cpf}</td>
-                <td >{city.nome}</td>
                 <td>{cliente.email}</td>
               </tr>
             ))}

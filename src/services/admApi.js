@@ -6,7 +6,7 @@ export const admApi = axios.create({
 })
 export const createAuth = async (email, senha) => {
 
-  return admApi.post("/user/auth", { email, senha })
+  return admApi.post("/auth/adm", { email, senha })
 }
 
 export const getToken = () => {

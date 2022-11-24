@@ -23,8 +23,8 @@ const Login = () => {
                     <h2>LOGIN</h2>
                     <form className="form" onSubmit={handleSubmit}>
                         <div className="mb-3">
-                            <label htmlFor="email" className="form-label">Email</label>
-                            <input type="email"
+                            <label htmlFor="email" className="form-label">Usuário</label>
+                            <input type="text"
                                 className="form-control"
                                 name="email"
                                 id="email"
