@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import NavbarADM from '../../components/navigate/navbarADM';
 
 const Hospedagem = () => {
@@ -10,7 +10,7 @@ const Hospedagem = () => {
     const [preco, setPreco] = useState("");
     const [desconto, setDesconto] = useState("");
     
-    const { id } = useParams();
+    // const { id } = useParams();
     // const [imagem, setImagem] = useState("");
     const [hospedagens, setHospedagens] = useState([]);
 
@@ -94,26 +94,26 @@ const Hospedagem = () => {
 
     // }getCidadeById();
 
-    useEffect(() => {
-        function getCityById() {
-            if (id) {
-                const cityDate = fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${345326}`)
-                    .then((response) => {
-                        setCNome(response.data.nome);
-                        setCUf(response.data.uf)
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    })
-            }
+    // useEffect(() => {
+    //     function getCityById() {
+    //         if (id) {
+    //             const cityDate = fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${345326}`)
+    //                 .then((response) => {
+    //                     setCNome(response.data.nome);
+    //                     setCUf(response.data.uf)
+    //                 })
+    //                 .catch((error) => {
+    //                     console.log(error);
+    //                 })
+    //         }
 
-        }
-        getCityById()
-    }, [id]);
+    //     }
+    //     getCityById()
+    // }, [id]);
 
 
-    const [cNome, setCNome] = useState("");
-    const [cUf, setCUf] = useState("");
+    // const [cNome, setCNome] = useState("");
+    // const [cUf, setCUf] = useState("");
 
 
     return (
