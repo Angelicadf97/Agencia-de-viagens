@@ -74,7 +74,7 @@ const Companhia = () => {
         e.preventDefault()
         try {
             const obj = localStorage.getItem("user")
-            const url = "https://agencia-viagens.herokuapp.com/adm/companhias/";
+            const url = "http://localhost:8080/adm/companhias/";
             const config = {
                 method: 'POST',
                 headers: {
@@ -106,7 +106,7 @@ const Companhia = () => {
                 },
                 body: JSON.stringify(companhia)
             }
-            const response = await fetch(`https://agencia-viagens.herokuapp.com/adm/companhias/${id}`, config)
+            const response = await fetch(`http://localhost:8080/adm/companhias/${id}`, config)
             if (response.ok) {
                 return response
             }

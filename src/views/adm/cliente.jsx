@@ -7,7 +7,7 @@ const Cliente = () => {
   useEffect(() => {
     async function fetchMyAPI() {
       const obj = localStorage.getItem("user")
-      const response = await fetch('https://agencia-viagens.herokuapp.com/', {
+      const response = await fetch('http://localhost:8080/', {
         headers: {
           'Authorization': 'Bearer ' + JSON.parse(obj).token
         }

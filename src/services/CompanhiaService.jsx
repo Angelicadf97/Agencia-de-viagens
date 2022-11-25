@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const COMP_API_URL = "https://agencia-viagens.herokuapp.com/";
+const COMP_API_URL = "http://localhost:8080/adm/companhias/";
 
 class CompanhiaService {
     //get all

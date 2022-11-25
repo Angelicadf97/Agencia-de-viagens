@@ -41,7 +41,7 @@ const Cadastro = () => {
                 
                 body: JSON.stringify(user)
             }
-            const response = await fetch("https://agencia-viagens.herokuapp.com/", config)
+            const response = await fetch("http://localhost:8080/", config)
             //const json = await response.json()
             if (response.ok) {
                 console.log("deu certo")
