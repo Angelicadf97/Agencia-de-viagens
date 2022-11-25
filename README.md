@@ -1,3 +1,7 @@
+Esse projeto foi desenvolvido para a atividade do módulo 5 do curso de Desenvolvedor Full Stack pela RecodePro.
+Você pode testar a aplicação através do link https://agencia-site.herokuapp.com/ para visualização como "cliente" e https://agencia-site.herokuapp.com/adm(usuário: adm e senha:adm) para acessar a área de cadastros do administrador.
+Esse repositório contém o front-end utlizando react.js, para acessar a API REST em Spring, acesse: https://github.com/Angelicadf97/Agencia-de-Viagens-API
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
