@@ -21,7 +21,7 @@ const Hospedagem = () => {
     useEffect(() => {
         async function fetchMyAPI() {
             const obj = localStorage.getItem("user")
-            const response = await fetch('http://localhost:8080/adm/hospedagens/', {
+            const response = await fetch('https://agencia-viagens.herokuapp.com/adm/hospedagens/', {
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(obj).token
                 }
@@ -56,7 +56,7 @@ const Hospedagem = () => {
 
                 body: JSON.stringify(hospedagem)
             }
-            const response = await fetch("http://localhost:8080/adm/hospedagens/", config)
+            const response = await fetch("https://agencia-viagens.herokuapp.com/adm/hospedagens/", config)
             //const json = await response.json()
             if (response.ok) {
                 console.log("deu certo")

@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const admApi = axios.create({
 
-  baseURL: "http://localhost:8080/",
+  baseURL: "https://agencia-viagens.herokuapp.com/",
 })
 export const createAuth = async (email, senha) => {
 
